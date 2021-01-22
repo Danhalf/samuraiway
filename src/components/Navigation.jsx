@@ -10,7 +10,7 @@ function Navigation() {
         <a href="#">Message</a>
       </div>
       <div>
-        <a href="#">News</a>
+        <a href="#">News11</a>
       </div>
       <div>
         <a href="#">Music</a>

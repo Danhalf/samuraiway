@@ -1,0 +1,12 @@
+.navigation {
+  grid-area: n;
+  background-color: cyan;
+}
+
+.item a {
+  color: #000;
+}
+
+.active a {
+  color: red;
+}

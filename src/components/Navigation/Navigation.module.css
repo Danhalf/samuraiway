@@ -4,9 +4,14 @@
 }
 
 .item a {
-  color: #000;
+  color: rgb(23, 3, 112);
+  text-decoration: none;
+  padding: 10px;
 }
 
-.active a {
-  color: red;
+.item a.active {
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5,
+    -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5,
+    -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;
 }

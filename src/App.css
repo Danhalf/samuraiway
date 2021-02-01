@@ -2,7 +2,6 @@
   display: grid;
   width: 1200px;
   margin: 0 auto;
-  grid-gap: 10px;
 
   grid-template-areas:
     'h h'
@@ -10,4 +9,9 @@
 
   grid-template-rows: 100px 10fr;
   grid-template-columns: 2fr 10fr;
+}
+
+.app-wrapper__main {
+  grid-area: m;
+  background-color: grey;
 }

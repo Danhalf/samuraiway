@@ -1,8 +1,8 @@
 import React from 'react';
-import './Dialogs.module.css';
+import styles from './Dialogs.module.css';
 
 const Dialogs = () => {
-  return <div>Dialogs</div>;
+  return <div className={styles.item}>Dialogs</div>;
 };
 
 export default Dialogs;

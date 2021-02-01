@@ -4,10 +4,10 @@ import styles from './Profile.module.css';
 
 function Profile() {
   return (
-    <main className={styles.main__content}>
+    <div>
       <div className={styles.user__background}>
         <img
-          className={styles.img}
+          className={styles.user__img}
           src="https://static.ukrinform.com/photos/2018_12/thumb_files/630_360_1545834471-803.jpg"
           alt=""
         />
@@ -21,7 +21,7 @@ function Profile() {
       </div>
       <div className={styles.user__description}></div>
       <MyPosts />
-    </main>
+    </div>
   );
 }
 

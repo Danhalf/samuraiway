@@ -3,10 +3,14 @@
   background-color: cyan;
 }
 
+.item {
+  padding: 10px;
+}
+
 .item a {
   color: rgb(23, 3, 112);
   text-decoration: none;
-  padding: 10px;
+
 }
 
 .item a.active {

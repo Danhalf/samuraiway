@@ -1,0 +1,18 @@
+.dialogs__item {
+  padding: 6px;
+}
+
+.item__link {
+  color: #fff;
+  cursor: pointer;
+  transition: 0.4s;
+  text-decoration: none;
+}
+
+.dialogs__item a:hover {
+  color: goldenrod;
+}
+
+.active {
+  color: gold;
+}

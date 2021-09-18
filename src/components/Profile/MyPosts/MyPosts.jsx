@@ -9,10 +9,10 @@ function MyPosts() {
   console.log(msgClone(5));
   return (
     <div>
-      My posts
-      <textarea></textarea>
-      <button>Add post</button>
       <div className={styles.posts}>
+        <h3>My posts</h3>
+        <textarea></textarea>
+        <button>Add post</button>
         <MyPost message={`${msgClone()} post`} />
         <MyPost message={`${msgClone()} post`} />
         <MyPost message={`${msgClone()} post`} />

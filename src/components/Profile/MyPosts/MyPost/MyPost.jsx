@@ -20,6 +20,7 @@ function MyPost(props) {
             <path d="M2 10h32L18 26 2 10z" fill="currentColor" />
           </svg>
         </span>
+        <span>{props.likes}</span>
       </div>
     </div>
   );

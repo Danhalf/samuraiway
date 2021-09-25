@@ -1,0 +1,14 @@
+{
+  "dialog_1": {
+    "id": 1,
+    "message": "Wazzup"
+  },
+  "dialog_2": {
+    "id": 2,
+    "message": "Whut a u doing?"
+  },
+  "dialog_3": {
+    "id": 3,
+    "message": "Shut up, mzfkr!"
+  }
+}

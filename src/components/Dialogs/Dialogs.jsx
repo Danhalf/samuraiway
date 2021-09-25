@@ -1,32 +1,34 @@
 import React from 'react';
 import style from './Dialogs.module.css';
+import dialogDB from './Dialog/dialogDB.json';
+import messageDB from './Message/messagesDB.json';
 import Dialog from './Dialog/Dialog';
-import CurrentDialogs from './CurrentDialogs.json';
+import Message from "./Message/Message";
 
-const currentDialog = Object.keys(CurrentDialogs).map((dialog) => (
+const CurrentDialogs = Object.keys(dialogDB).map((dialog) => (
     <Dialog
-        key={CurrentDialogs[dialog].id}
-        name={CurrentDialogs[dialog].name}
-        link={`id??${CurrentDialogs[dialog].id}_name??${CurrentDialogs[dialog].name}`}
+        key={dialogDB[dialog].id}
+        name={dialogDB[dialog].name}
+        link={`id??${dialogDB[dialog].id}_name??${dialogDB[dialog].name}`}
     />
 ));
 
-let messages = [
-    {id: 1, message: 'Wazzup'},
-    {id: 2, message: "Whut a u doing?"},
-    {id: 3, message: "Shut up, mzfkr!"}
-]
+const CurrentMessages = Object.keys(messageDB).map((message) => (
+    <Message
+        key={messageDB[message].id}
+        message={messageDB[message].message}
+    />
+));
 
-const Messages = (props) => <div className={style.message__item}>{props.message}</div>;
 
 function Dialogs() {
     return (
         <div className={style.dialogs}>
             <div className={style.dialogs__items}>
-                { currentDialog }
+                {CurrentDialogs}
             </div>
             <div className={style.messages__items}>
-                {messages.map(m=> <Messages message={m.message}/>)}
+                {CurrentMessages}
             </div>
         </div>
     );

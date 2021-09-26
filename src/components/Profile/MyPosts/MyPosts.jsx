@@ -1,19 +1,12 @@
 import React from 'react';
-import MyPost from './MyPost/MyPost';
 import styles from './MyPosts.module.css';
+import MyPost from "./MyPost/MyPost";
 
-let count = 0;
 
-const msgClone = () => new Array(count++).length;
-const posts = [
-    {id: 1, message: `It's my ${msgClone()}st post!`, likesCount: 24},
-    {id: 2, message: `It's my ${msgClone()}st post!`, likesCount: 4},
-    {id: 3, message: `It's my ${msgClone()}st post!`, likesCount: 4}
-]
+function MyPosts(props) {
 
-const postElements = posts.map( (post, index) => <MyPost key={index+post.id} message={post.message} likes={post.likesCount}/>)
+const postElements = props.posts.map( (post, index) => <MyPost key={index+post.id} message={post.message} likes={post.likesCount}/>)
 
-function MyPosts() {
     return (
         <div>
             <div className={styles.posts}>

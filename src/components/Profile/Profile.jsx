@@ -1,15 +1,15 @@
 import React from 'react';
 import MyPosts from './MyPosts/MyPosts';
-import styles from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+// import PostsDB from "../../PostsDB";
 
-function Profile() {
-  return (
-    <div>
-      <ProfileInfo />
-      <MyPosts />
-    </div>
-  );
+function Profile(props) {
+    return (
+        <div>
+            <ProfileInfo/>
+            <MyPosts posts={props.posts}/>
+        </div>
+    );
 }
 
 export default Profile;

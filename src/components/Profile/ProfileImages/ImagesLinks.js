@@ -1,0 +1,2 @@
+export const UserAvatar = 'https://hypeava.ru/uploads/posts/2018-04/1523898769_1.gif';
+export const UserBackground = 'https://static.ukrinform.com/photos/2018_12/thumb_files/630_360_1545834471-803.jpg'

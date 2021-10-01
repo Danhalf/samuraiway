@@ -1,18 +1,28 @@
 .dialogs__item {
   padding: 6px;
+
 }
+
+
 
 .item__link {
   color: #fff;
   cursor: pointer;
   transition: 0.4s;
   text-decoration: none;
+  border-bottom: 2px solid #fff;
 }
 
 .dialogs__item a:hover {
-  color: goldenrod;
+  color: #0a0a0a;
+  border-bottom: 4px solid #0a0a0a;
 }
 
 .active {
   color: gold;
+}
+
+.user_avatar {
+  width: 60px;
+  height: 60px;
 }

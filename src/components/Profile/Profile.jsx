@@ -1,15 +1,13 @@
 import React from 'react';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-// import PostsDB from "../../PostsDB";
+import {UserBackground, UserAvatar} from './ProfileImages/ImagesLinks'
 
-function Profile(props) {
-    return (
-        <div>
-            <ProfileInfo/>
-            <MyPosts posts={props.posts}/>
-        </div>
-    );
-}
+const Profile = props => (
+    <div>
+        <ProfileInfo background={ UserBackground } avatar={ UserAvatar }/>
+        <MyPosts state={ props.state } avatar={ UserAvatar } addPost={props.addPost}/>
+    </div>
+);
 
 export default Profile;

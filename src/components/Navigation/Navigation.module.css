@@ -1,19 +1,27 @@
 .navigation {
-  grid-area: n;
-  background-color: rgb(206, 142, 156);
+    grid-area: n;
+    background-color: rgb(206, 142, 156);
 }
 
 .item {
-  padding: 10px;
+    padding: 10px;
 }
 
 .item a {
-  color: rgb(23, 3, 112);
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
+    transition: .4s;
+}
+
+.item a:hover {
+    color: bisque;
 }
 
 .item a.active {
-  color: #ffffff;
-  text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5,
-    -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;
+    color: #ffffff;
+}
+
+.best_friends {
+    margin-top: 100px;
+    padding-bottom: 40px;
 }

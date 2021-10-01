@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './MyPost.module.css';
-import { AvatarGenerator } from 'random-avatar-generator';
+
 
 function MyPost(props) {
-  const generator = new AvatarGenerator();
+
 
   for (const btn of document.querySelectorAll('.vote')) {
     btn.addEventListener('click', (event) => {
@@ -12,7 +12,7 @@ function MyPost(props) {
   }
   return (
     <div className={styles.post}>
-      <img src={generator.generateRandomAvatar()} alt="user avatar" />
+      <img className={styles.user_avatar} src={props.avatar} alt="user avatar" />
       {props.message}
       <div>
         <span className="vote">

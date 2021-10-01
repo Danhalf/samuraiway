@@ -1,4 +1,6 @@
-const State = {
+import renderEntireTree from "../render";
+
+const state = {
     dialogPage: {
         dialogs: [
             {
@@ -54,14 +56,15 @@ const State = {
 
 export const addPost = (postMessage) => {
 
-    const getID = () => Math.max( ...State.profilePage.posts.map(post=> isNaN(post.id) ? 0 : post.id) )
+    const getID = () => Math.max( ...state.profilePage.posts.map(post=> isNaN(post.id) ? 0 : post.id) )
     let newPost = {
         id: getID() + 1,
         message: postMessage,
         likesCount: ~~(Math.random() * 10)
     }
-    State.profilePage.posts.push(newPost)
+    state.profilePage.posts.push(newPost)
+    renderEntireTree(state, addPost);
 }
 
 
-export default State
+export default state

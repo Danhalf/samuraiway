@@ -1,6 +1,19 @@
-import renderEntireTree from "./render";
-import state from "./db/state"
+import store from "./db/state"
+import ReactDOM from "react-dom";
+import React from "react";
+import App from "./App";
 
 
-renderEntireTree(state)
+const renderEntireTree = () => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App store={ store }
+            />
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
 
+renderEntireTree(store)
+
+store.subscribe(renderEntireTree)

@@ -6,7 +6,6 @@ let newPostRef = createRef();
 
 
 function MyPosts(props) {
-
     const postElements = props.state.posts.map((post, index) =>
         <MyPost key={ index + post.id } message={ post.message }
                 likes={ post.likesCount }

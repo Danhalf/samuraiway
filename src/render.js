@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-// import postsDB from "./db/PostsDB.js";
-// import messagesDB from "./db/messagesDB.json";
-// import dialogsDB from "./db/dialogDB.json";
+import { addMessage, updateDialogsMessage, addPost, updatePostMessage } from "./db/state";
 
 
-
-const renderEntireTree = (state, addPost) => {
+const renderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={addPost}/>
+            <App state={ state }
+                 addPost={ addPost }
+                 addMessage={ addMessage }
+                 updatePostMessage={ updatePostMessage }
+                 updateDialogsMessage={ updateDialogsMessage }
+            />
         </React.StrictMode>,
         document.getElementById('root')
     );

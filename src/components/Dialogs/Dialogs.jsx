@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import style from './Dialogs.module.css';
 import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
+
+let newMessageRef = createRef();
 
 const Dialogs = props => {
     const CurrentDialogs = Object.keys(props.state.dialogs).map((dialog) => (
@@ -19,8 +21,14 @@ const Dialogs = props => {
         <Message
             key={ props.state.messages[message].id }
             message={ props.state.messages[message].message }
+            updateDialogsMessage={ props.updateDialogsMessage }
         />
     ));
+
+    const changeText = () => {
+        let text = newMessageRef.current.value
+        props.updateDialogsMessage(text)
+    }
 
     return (
         <div className={ style.dialogs }>
@@ -32,8 +40,28 @@ const Dialogs = props => {
                     { CurrentMessages }
                 </div>
                 <div className={ style.messages__add }>
-                    <TextField fullWidth label="Мое сообщение..." id="fullWidth" />
-                    <Button variant="contained"  endIcon={<SendIcon />} className={ style.messages__add_btn } sx={{backgroundColor: "rgb(206, 142, 156)"}}>
+                    {/*<TextField*/ }
+                    {/*    fullWidth*/ }
+                    {/*    // label="Мое сообщение..."*/ }
+                    {/*    id="outlined-uncontrolled"*/ }
+                    {/*    onChange={ changeText }*/ }
+                    {/*    ref={ newMessageRef }*/ }
+                    {/*    defaultValue={ props.state.inputMessage }*/ }
+                    {/*/>*/ }
+                    <textarea
+                        // label="Мое сообщение..."
+                        id="outlined-uncontrolled"
+                        onChange={ changeText }
+                        ref={ newMessageRef }
+                        defaultValue={ props.state.inputMessage }
+                    />
+
+                    <Button
+                        variant="contained"
+                        endIcon={ <SendIcon/> }
+                        onClick={ props.addMessage }
+                        sx={ { backgroundColor: "rgb(206, 142, 156)" } }
+                    >
                         Добавить сообщение
                     </Button>
                 </div>

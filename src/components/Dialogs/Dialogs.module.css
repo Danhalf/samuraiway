@@ -1,29 +1,29 @@
 .dialogs {
-  display: grid;
-  grid-template-columns: 2fr 8fr;
+    display: grid;
+    grid-template-columns: 2fr 8fr;
 }
 
 .dialogs__items {
 }
 
 .dialogs__item {
-  padding: 6px;
+    padding: 6px;
 }
 
 .active {
-  color: red;
+    color: red;
 }
 
 .messages {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
 }
 
 .messages__add {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 /*.messages__add_btn {*/
@@ -31,6 +31,8 @@
 /*}*/
 
 .messages__items {
+    display: flex;
+    flex-direction: column;
 }
 
 .messages__item {

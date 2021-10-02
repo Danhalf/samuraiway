@@ -13,23 +13,35 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 function App(props) {
 
-  return (
-    <BrowserRouter>
-      <div className="app-wrapper">
+    return (
+        <BrowserRouter>
+            <div className="app-wrapper">
 
-        <Header />
-        <Navigation />
-        <main className="app-wrapper__main">
-          <Route path="/profile" render={ () => <Profile state={props.state.profilePage} addPost={props.addPost} />} />
-          <Route path="/dialogs" render={ () => <Dialogs state={props.state.dialogPage}/>} />
-          <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/bestfriends" component={BestFriends} />
-        </main>
-      </div>
-    </BrowserRouter>
-  );
+                <Header/>
+                <Navigation/>
+                <main className="app-wrapper__main">
+                    <Route path="/profile"
+                           render={ () => <Profile
+                               state={ props.state.profilePage }
+                               addPost={ props.addPost }
+                               updatePostMessage={ props.updatePostMessage }
+                           /> }
+                    />
+                    <Route path="/dialogs"
+                           render={ () => <Dialogs
+                               state={ props.state.dialogPage }
+                               addMessage={ props.addMessage }
+                               updateDialogsMessage={ props.updateDialogsMessage }
+                           /> }
+                    />
+                    <Route path="/news" component={ News }/>
+                    <Route path="/music" component={ Music }/>
+                    <Route path="/settings" component={ Settings }/>
+                    <Route path="/bestfriends" component={ BestFriends }/>
+                </main>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

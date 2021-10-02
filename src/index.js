@@ -1,6 +1,6 @@
 import renderEntireTree from "./render";
-import state, { addPost } from "./db/state"
+import state from "./db/state"
 
 
-renderEntireTree(state,addPost)
+renderEntireTree(state)
 

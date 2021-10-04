@@ -22,16 +22,16 @@ function App(props) {
                 <main className="app-wrapper__main">
                     <Route path="/profile"
                            render={ () => <Profile
-                               state={ props.store.state.profilePage }
-                               addPost={ props.store.addPost }
-                               updatePostMessage={ props.store.updatePostMessage }
+                               state={ props.state.profilePage }
+                               // addPost={ props.store.addPost.bind(props.store) }
+                               // updatePostMessage={ props.store.updatePostMessage.bind(props.store) }
                            /> }
                     />
                     <Route path="/dialogs"
                            render={ () => <Dialogs
-                               state={ props.store.state.dialogPage }
-                               addMessage={ props.store.addMessage }
-                               updateDialogsMessage={ props.store.updateDialogsMessage }
+                               state={ props.state.dialogPage }
+                               // addMessage={ props.store.addMessage.bind(props.store) }
+                               // updateDialogsMessage={ props.store.updateDialogsMessage.bind(props.store) }
                            /> }
                     />
                     <Route path="/news" component={ News }/>

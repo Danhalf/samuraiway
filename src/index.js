@@ -1,19 +1,19 @@
-import store from "./db/state"
+import state from "./db/state"
 import ReactDOM from "react-dom";
 import React from "react";
 import App from "./App";
 
 
-const renderEntireTree = () => {
+const renderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App store={ store }
+            <App state={ state }
             />
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-renderEntireTree(store)
+renderEntireTree(state)
 
-store.subscribe(renderEntireTree)
+state.subscribe(renderEntireTree)

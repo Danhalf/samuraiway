@@ -1,9 +1,9 @@
 let store = {
-    renderEntireTree() {
+    _watch() {
         return ''
     },
 
-    state: {
+    _state: {
         dialogPage: {
             dialogs: [
                 {
@@ -57,43 +57,44 @@ let store = {
         }
     },
 
-    getID(...page) {
+    get state() {
+        return this._state
+    },
+
+    _getID(...page) {
         return Math.max(...page.map(obj => isNaN(obj.id) ? 0 : obj.id)) + 1
     },
 
-    addPost() {
-        let newPost = {
-            id: store.getID(...store.state.profilePage.posts),
-            message: store.state.profilePage.inputMessage,
-            likesCount: ~~(Math.random() * 10)
-        }
-        store.state.profilePage.posts.push(newPost)
-        store.state.profilePage.inputMessage = ''
-        store.renderEntireTree();
-    },
-
-    updatePostMessage(message) {
-        store.state.profilePage.inputMessage = message;
-        store.renderEntireTree();
-    },
-
-    addMessage() {
-        let newMessage = {
-            id: store.getID(...store.state.dialogPage.messages),
-            message: store.state.dialogPage.inputMessage,
-        }
-        store.state.dialogPage.messages.push(newMessage)
-        store.state.dialogPage.inputMessage = ''
-        store.renderEntireTree();
-    },
-
-    updateDialogsMessage(message) {
-        store.state.dialogPage.inputMessage = message;
-        store.renderEntireTree();
-    },
 
     subscribe(observer) {
-        store.renderEntireTree = observer
+        this._watch = observer
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: store._getID(...this._state.profilePage.posts),
+                message: store._state.profilePage.inputMessage,
+                likesCount: ~~(Math.random() * 10)
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.inputMessage = ''
+            this._watch();
+        } else if (action.type === 'UPDATE-POST-MESSAGE') {
+            this._state.profilePage.inputMessage = message;
+            this._watch();
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newMessage = {
+                id: this._getID(...this._state.dialogPage.messages),
+                message: this._state.dialogPage.inputMessage,
+            }
+            this._state.dialogPage.messages.push(newMessage)
+            this._state.dialogPage.inputMessage = ''
+            this._watch();
+        } else if (action.type === 'UPDATE-DIALOG-MESSAGE') {
+            this.state.dialogPage.inputMessage = action.message;
+            this._watch();
+        }
     }
 }
 

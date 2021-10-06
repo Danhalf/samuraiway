@@ -27,8 +27,11 @@ const Dialogs = props => {
 
     const changeText = () => {
         let text = newMessageRef.current.value
-        props.updateDialogsMessage(text)
+        const action = { type: 'UPDATE-DIALOG-MESSAGE', message: text };
+        props.dispatch(action)
     }
+
+    const addMessage = () => props.dispatch({ type: "ADD-MESSAGE" })
 
     return (
         <div className={ style.dialogs }>
@@ -59,7 +62,7 @@ const Dialogs = props => {
                     <Button
                         variant="contained"
                         endIcon={ <SendIcon/> }
-                        onClick={ props.addMessage }
+                        onClick={ addMessage }
                         sx={ { backgroundColor: "rgb(206, 142, 156)" } }
                     >
                         Добавить сообщение

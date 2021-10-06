@@ -71,6 +71,7 @@ let store = {
     },
 
     dispatch(action) {
+
         if (action.type === 'ADD-POST') {
             let newPost = {
                 id: store._getID(...this._state.profilePage.posts),
@@ -81,7 +82,7 @@ let store = {
             this._state.profilePage.inputMessage = ''
             this._watch();
         } else if (action.type === 'UPDATE-POST-MESSAGE') {
-            this._state.profilePage.inputMessage = message;
+            this._state.profilePage.inputMessage = action.message;
             this._watch();
         } else if (action.type === 'ADD-MESSAGE') {
             let newMessage = {

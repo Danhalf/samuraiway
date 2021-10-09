@@ -4,6 +4,7 @@ import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import { addMessageActionCreator, updateDialogMessageActionCreator } from "../../db/state";
 // import TextField from '@mui/material/TextField';
 
 let newMessageRef = createRef();
@@ -27,11 +28,13 @@ const Dialogs = props => {
 
     const changeText = () => {
         let text = newMessageRef.current.value
-        const action = { type: 'UPDATE-DIALOG-MESSAGE', message: text };
-        props.dispatch(action)
+        props.dispatch(updateDialogMessageActionCreator(text))
     }
 
-    const addMessage = () => props.dispatch({ type: "ADD-MESSAGE" })
+    const addMessage = () => {
+        props.dispatch(addMessageActionCreator())
+        newMessageRef.current.value = ''
+    }
 
     return (
         <div className={ style.dialogs }>
@@ -53,6 +56,7 @@ const Dialogs = props => {
                     {/*/>*/ }
                     <textarea
                         // label="Мое сообщение..."
+                        className={ style.textarea }
                         id="outlined-uncontrolled"
                         onChange={ changeText }
                         ref={ newMessageRef }
@@ -63,7 +67,7 @@ const Dialogs = props => {
                         variant="contained"
                         endIcon={ <SendIcon/> }
                         onClick={ addMessage }
-                        sx={ { backgroundColor: "rgb(206, 142, 156)" } }
+                        sx={ { backgroundColor: "rgb(206, 142, 156)", borderRadius: '0 0 8px 8px' } }
                     >
                         Добавить сообщение
                     </Button>

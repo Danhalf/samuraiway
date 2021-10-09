@@ -1,11 +1,11 @@
 import React, { createRef } from 'react';
 import styles from './MyPosts.module.css';
 import MyPost from "./MyPost/MyPost";
-
-let newPostRef = createRef();
+import { updatePostMessageActionCreator, addPostActionCreator } from "../../../db/state";
 
 
 function MyPosts(props) {
+    let newPostRef = createRef();
     const postElements = props.state.posts.map((post, index) =>
         <MyPost key={ index + post.id } message={ post.message }
                 likes={ post.likesCount }
@@ -14,10 +14,10 @@ function MyPosts(props) {
 
     const changeText = () => {
         let text = newPostRef.current.value
-        props.dispatch({ type: 'UPDATE-POST-MESSAGE', message: text })
+        props.dispatch(updatePostMessageActionCreator(text))
     }
 
-    const addPost = () => props.dispatch({ type: 'ADD-POST' })
+    const addPost = () => props.dispatch(addPostActionCreator())
 
     return (
         <div>

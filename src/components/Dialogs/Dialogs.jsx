@@ -5,9 +5,8 @@ import Dialog from "./Dialog/Dialog";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { addMessageActionCreator, updateDialogMessageActionCreator } from "../../db/state";
-// import TextField from '@mui/material/TextField';
+import TextField from '@mui/material/TextField';
 
-let newMessageRef = createRef();
 
 const Dialogs = props => {
     const CurrentDialogs = Object.keys(props.state.dialogs).map((dialog) => (
@@ -26,14 +25,16 @@ const Dialogs = props => {
         />
     ));
 
-    const changeText = () => {
-        let text = newMessageRef.current.value
+    let newMessage = props.state.message
+
+    const changeText = (evt) => {
+        let text = evt.target.value;
         props.dispatch(updateDialogMessageActionCreator(text))
     }
 
     const addMessage = () => {
         props.dispatch(addMessageActionCreator())
-        newMessageRef.current.value = ''
+        newMessage = ''
     }
 
     return (
@@ -46,22 +47,21 @@ const Dialogs = props => {
                     { CurrentMessages }
                 </div>
                 <div className={ style.messages__add }>
-                    {/*<TextField*/ }
-                    {/*    fullWidth*/ }
+                    <TextField
+                        fullWidth
+                        label="Мое сообщение..."
+                        id="outlined-uncontrolled"
+                        onChange={ changeText }
+                        value={ newMessage }
+                    />
+                    {/*<textarea*/ }
                     {/*    // label="Мое сообщение..."*/ }
+                    {/*    className={ style.textarea }*/ }
                     {/*    id="outlined-uncontrolled"*/ }
                     {/*    onChange={ changeText }*/ }
                     {/*    ref={ newMessageRef }*/ }
                     {/*    defaultValue={ props.state.inputMessage }*/ }
                     {/*/>*/ }
-                    <textarea
-                        // label="Мое сообщение..."
-                        className={ style.textarea }
-                        id="outlined-uncontrolled"
-                        onChange={ changeText }
-                        ref={ newMessageRef }
-                        defaultValue={ props.state.inputMessage }
-                    />
 
                     <Button
                         variant="contained"

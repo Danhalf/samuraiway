@@ -113,7 +113,7 @@ let store = {
 
     }
 }
-
+// cmt
 export const addPostActionCreator = () => ({ type: ADD_POST })
 export const updatePostMessageActionCreator = text => ({ type: UPDATE_POST_MESSAGE, message: text })
 export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })

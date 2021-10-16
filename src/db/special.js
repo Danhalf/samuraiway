@@ -1,0 +1,1 @@
+export const getID = (...page) => Math.max(...page.map(obj => isNaN(obj.id) ? 0 : obj.id)) + 1

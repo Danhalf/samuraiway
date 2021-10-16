@@ -4,7 +4,7 @@ import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import { addMessageActionCreator, updateDialogMessageActionCreator } from "../../db/state";
+import { addMessageActionCreator, updateDialogMessageActionCreator } from "../../db/dialogsReducer";
 import TextField from '@mui/material/TextField';
 
 

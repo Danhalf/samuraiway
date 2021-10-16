@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import styles from './MyPosts.module.css';
 import MyPost from "./MyPost/MyPost";
-import { updatePostMessageActionCreator, addPostActionCreator } from "../../../db/state";
+import { updatePostMessageActionCreator, addPostActionCreator } from "../../../db/profileReducer";
 
 
 function MyPosts(props) {

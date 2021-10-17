@@ -31,11 +31,14 @@ const Dialogs = props => {
     const changeText = (evt) => {
         let text = evt.target.value;
         props.dispatch(updateDialogMessageActionCreator(text))
+        isDisabled()
     }
 
     const addMessage = () => {
         props.dispatch(addMessageActionCreator())
     }
+
+    const isDisabled = () => newMessage === ''
 
     return (
         <div className={ style.dialogs }>
@@ -59,6 +62,7 @@ const Dialogs = props => {
                         variant="contained"
                         endIcon={ <SendIcon/> }
                         onClick={ addMessage }
+                        disabled={ isDisabled() }
                         sx={ { backgroundColor: "rgb(206, 142, 156)", borderRadius: '0 0 8px 8px' } }
                     >
                         Добавить сообщение

@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './MyPosts.module.css';
 import MyPost from "./MyPost/MyPost";
 import { updatePostMessageActionCreator, addPostActionCreator } from "../../../db/profileReducer";
-import { TextField } from "@mui/material";
+import { TextField, Button } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 
 
 function MyPosts(props) {
@@ -15,18 +16,24 @@ function MyPosts(props) {
     const changeText = (evt) => {
         let text = evt.target.value
         props.dispatch(updatePostMessageActionCreator(text))
-        console.log(props.dispatch(updatePostMessageActionCreator(text)))
+        isDisabled()
     }
 
     const addPost = () => props.dispatch(addPostActionCreator())
+    const isDisabled = () => props.state.inputMessage === ''
 
     return (
         <div>
             <div className={ styles.posts }>
                 <h3>My posts</h3>
-                <TextField label="Обновите ваш статус!" onChange={ changeText }
-                           value={ props.state.inputMessage }/>
-                <button onClick={ addPost }>Add post</button>
+                <div className={ styles.add__post }>
+                    <TextField label="Обновите ваш статус!" onChange={ changeText }
+                               value={ props.state.inputMessage }/>
+                    <Button variant="contained" endIcon={ <AddIcon/> } onClick={ addPost } disabled={ isDisabled() }
+                            sx={ { height: '100%' } }> Add
+                        post</Button>
+                </div>
+
                 { postElements }
             </div>
         </div>

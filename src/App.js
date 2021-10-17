@@ -17,22 +17,18 @@ function App(props) {
             <div className="app-wrapper">
 
                 <Header/>
-                <Navigation/>
+                <Navigation messagesCount={ () => props.getState.dialogPage.dialogs.length ?? 0 }/>
                 <main className="app-wrapper__main">
                     <Route path="/profile"
                            render={ () => <Profile
                                state={ props.state.profilePage }
                                dispatch={ props.dispatch }
-                               // addPost={ props.store.addPost.bind(props.store) }
-                               // updatePostMessage={ props.store.updatePostMessage.bind(props.store) }
                            /> }
                     />
                     <Route path="/dialogs"
                            render={ () => <Dialogs
-                               state={ props.state.dialogPage }
+                               state={ props.state.dialogsPage }
                                dispatch={ props.dispatch }
-                               // addMessage={ props.store.addMessage.bind(props.store) }
-                               // updateDialogsMessage={ props.store.updateDialogsMessage.bind(props.store) }
                            /> }
                     />
                     <Route path="/news" component={ News }/>

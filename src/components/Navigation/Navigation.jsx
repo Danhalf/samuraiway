@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
-const Navigation = () => (
+const Navigation = (props) => (
     <nav className={ styles.navigation }>
         <div className={ styles.item }>
             <NavLink to="/profile" activeClassName={ styles.active }>
@@ -12,6 +12,7 @@ const Navigation = () => (
         <div className={ styles.item }>
             <NavLink to="/dialogs" activeClassName={ styles.active }>
                 Message
+                <span>{ props.messagesCount }</span>
             </NavLink>
         </div>
         <div className={ styles.item }>

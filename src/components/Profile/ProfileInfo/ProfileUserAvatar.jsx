@@ -1,12 +1,13 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 
 function ProfileUserAvatar(props) {
     return (
 
-        <a href='/profile' className={ props.className }>
+        <NavLink to='/profile' className={ props.className }>
             <img className={ props.imgClassName } src={ props.avatar } alt=""/>
-        </a>
+        </NavLink>
 
 
     );

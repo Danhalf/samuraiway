@@ -32,9 +32,6 @@
     flex-direction: column;
 }
 
-/*.messages__add_btn {*/
-/*  background: rgb(206, 142, 156) !important;*/
-/*}*/
 
 .messages__items {
     display: flex;

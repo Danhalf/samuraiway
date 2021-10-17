@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 import style from './Dialogs.module.css';
 import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
@@ -13,6 +13,7 @@ const Dialogs = props => {
         <Dialog
             key={ props.state.dialogs[dialog].id }
             name={ props.state.dialogs[dialog].name }
+            avatar={ props.state.dialogs[dialog].avatar }
             link={ `id??${ props.state.dialogs[dialog].id }_name??${ props.state.dialogs[dialog].name }` }
         />
     ));
@@ -25,7 +26,7 @@ const Dialogs = props => {
         />
     ));
 
-    let newMessage = props.state.message
+    let newMessage = props.state.inputMessage
 
     const changeText = (evt) => {
         let text = evt.target.value;
@@ -34,7 +35,6 @@ const Dialogs = props => {
 
     const addMessage = () => {
         props.dispatch(addMessageActionCreator())
-        newMessage = ''
     }
 
     return (
@@ -54,14 +54,6 @@ const Dialogs = props => {
                         onChange={ changeText }
                         value={ newMessage }
                     />
-                    {/*<textarea*/ }
-                    {/*    // label="Мое сообщение..."*/ }
-                    {/*    className={ style.textarea }*/ }
-                    {/*    id="outlined-uncontrolled"*/ }
-                    {/*    onChange={ changeText }*/ }
-                    {/*    ref={ newMessageRef }*/ }
-                    {/*    defaultValue={ props.state.inputMessage }*/ }
-                    {/*/>*/ }
 
                     <Button
                         variant="contained"

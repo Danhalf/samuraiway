@@ -1,5 +1,3 @@
-import { getID } from "./special";
-
 const ADD_POST = 'ADD-POST'
 const UPDATE_POST_MESSAGE = ' UPDATE-POST-MESSAGE'
 
@@ -10,18 +8,18 @@ const profileReducer = (state, action) => {
         case ADD_POST:
             let newPost = {
                 id: 44,
-                message: this._state.profilePage.inputMessage,
+                message: state.inputMessage,
                 likesCount: ~~(Math.random() * 10)
             }
             state.posts.push(newPost)
             state.inputMessage = ''
-            break
+            return state
         case UPDATE_POST_MESSAGE :
             state.inputMessage = action.message;
-            break
+            return state
         default :
             console.log(`Unknown type ${ action.type }`)
-            break
+            return state
     }
 
 

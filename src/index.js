@@ -1,4 +1,4 @@
-import store from "./db/state"
+import store from "./db/store"
 import ReactDOM from "react-dom";
 import React from "react";
 import App from "./App";
@@ -15,6 +15,6 @@ const renderEntireTree = () => {
     );
 }
 
-renderEntireTree()
+renderEntireTree(store)
 
 store.subscribe(renderEntireTree)

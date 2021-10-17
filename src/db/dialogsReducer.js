@@ -1,25 +1,22 @@
-import { getID } from "./special";
-
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_DIALOG_MESSAGE = 'UPDATE-DIALOG-MESSAGE'
 
 const dialogsReducer = (state, action) => {
-    console.log(state);
     switch (action.type) {
         case ADD_MESSAGE :
             let newMessage = {
-                id: getID(state.posts),
+                id: ~~(Math.random() * 1000),
                 message: state.inputMessage,
             }
             state.messages.push(newMessage)
             state.inputMessage = ''
-            break
+            return state
         case UPDATE_DIALOG_MESSAGE:
             state.inputMessage = action.message;
-            break
+            return state
         default :
             console.log(`Unknown type ${ action.type }`)
-            break
+            return state
     }
 
     return state

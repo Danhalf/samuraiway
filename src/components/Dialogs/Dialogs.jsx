@@ -4,41 +4,41 @@ import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import { addMessageActionCreator, updateDialogMessageActionCreator } from "../../db/dialogsReducer";
 import TextField from '@mui/material/TextField';
 
 
 const Dialogs = props => {
-    const CurrentDialogs = Object.keys(props.state.dialogs).map((dialog) => (
+    let dialogs = props.dialogs
+    let messages = props.messages
+    const CurrentDialogs = Object.keys(dialogs).map((dialog) => (
         <Dialog
-            key={ props.state.dialogs[dialog].id }
-            name={ props.state.dialogs[dialog].name }
-            avatar={ props.state.dialogs[dialog].avatar }
-            link={ `id??${ props.state.dialogs[dialog].id }_name??${ props.state.dialogs[dialog].name }` }
+            key={ dialogs[dialog].id }
+            name={ dialogs[dialog].name }
+            avatar={ dialogs[dialog].avatar }
+            link={ `id??${ dialogs[dialog].id }_name??${ dialogs[dialog].name }` }
         />
     ));
 
-    const CurrentMessages = Object.keys(props.state.messages).map((message) => (
+    const CurrentMessages = Object.keys(messages).map((message) => (
         <Message
-            key={ props.state.messages[message].id }
-            message={ props.state.messages[message].message }
+            key={ messages[message].id }
+            message={ messages[message].message }
             updateDialogsMessage={ props.updateDialogsMessage }
         />
     ));
 
-    let newMessage = props.state.inputMessage
+    let newMessage = props.inputMessage
 
-    const changeText = (evt) => {
+    const onChangeText = (evt) => {
         let text = evt.target.value;
-        props.dispatch(updateDialogMessageActionCreator(text))
-        isDisabled()
+        props.changeText(text)
     }
 
-    const addMessage = () => {
-        props.dispatch(addMessageActionCreator())
+    const onAddMessage = () => {
+        props.addMessage()
     }
 
-    const isDisabled = () => newMessage === ''
+    const checkIsDisabled = () => props.isDisabled()
 
     return (
         <div className={ style.dialogs }>
@@ -54,15 +54,15 @@ const Dialogs = props => {
                         fullWidth
                         label="Мое сообщение..."
                         id="outlined-uncontrolled"
-                        onChange={ changeText }
+                        onChange={ onChangeText }
                         value={ newMessage }
                     />
 
                     <Button
                         variant="contained"
                         endIcon={ <SendIcon/> }
-                        onClick={ addMessage }
-                        disabled={ isDisabled() }
+                        onClick={ onAddMessage }
+                        disabled={ checkIsDisabled() }
                         sx={ { backgroundColor: "rgb(206, 142, 156)", borderRadius: '0 0 8px 8px' } }
                     >
                         Добавить сообщение

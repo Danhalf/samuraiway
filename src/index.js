@@ -2,15 +2,17 @@ import ReactDOM from "react-dom";
 import React from "react";
 import App from "./App";
 import store from "./db/redux-store"
+import { BrowserRouter } from "react-router-dom";
 
 
 const renderEntireTree = (state) => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <App state={ state }
-                 dispatch={ store.dispatch }
-            />
+            <BrowserRouter>
+                <App state={ state } dispatch={ store.dispatch }
+                />
+            </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );

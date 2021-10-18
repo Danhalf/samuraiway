@@ -68,7 +68,6 @@ const dialogsReducer = (state = initialState, action) => {
             state.inputMessage = action.message;
             return state
         default :
-            console.log(`Unknown type ${ action.type }`)
             return state
     }
 

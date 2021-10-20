@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Header.module.css';
 import logo from './images/logo.png';
 import ProfileUserAvatar from "../Profile/ProfileInfo/ProfileUserAvatar";
-import { UserAvatar } from "../Profile/ProfileImages/ImagesLinks";
+import { UserAvatar } from "../../db/ImagesLinks";
 
 function Header() {
     return (

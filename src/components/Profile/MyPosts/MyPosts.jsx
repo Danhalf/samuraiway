@@ -9,7 +9,7 @@ function MyPosts(props) {
     const postElements = props.posts.map((post, index) =>
         <MyPost key={ index + post.id } message={ post.message }
                 likes={ post.likesCount }
-                avatar={ props.avatar }
+                avatar={ post.userAvatar }
         />)
 
     const onChangeText = (evt) => {
@@ -24,12 +24,18 @@ function MyPosts(props) {
             <div className={ styles.posts }>
                 <h3>My posts</h3>
                 <div className={ styles.add__post }>
-                    <TextField label="Обновите ваш статус!" onChange={ onChangeText }
-                               value={ props.inputMessage }/>
-                    <Button variant="contained" endIcon={ <AddIcon/> } onClick={ onAddPost }
-                            disabled={ props.buttonDisabled }
-                            sx={ { height: '100%' } }> Add
-                        post</Button>
+                    <TextField
+                        label="Обновите ваш статус!"
+                        onChange={ onChangeText }
+                        value={ props.inputMessage }
+                    />
+                    <Button
+                        variant="contained" endIcon={ <AddIcon/> }
+                        onClick={ onAddPost }
+                        disabled={ props.buttonDisabled }
+                        sx={ { height: '100%' } }>
+                        Add post
+                    </Button>
                 </div>
 
                 { postElements }

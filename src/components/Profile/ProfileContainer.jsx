@@ -1,11 +1,13 @@
-import { updatePostMessageAction, addPostAction } from "../../../db/profileReducer";
-import MyPosts from "./MyPosts";
+import { updatePostMessageAction, addPostAction } from "../../db/profileReducer";
 import { connect } from "react-redux";
+import Profile from "./Profile";
 
 
 const mapStateToProps = state => ({
     posts: state.profilePage.posts,
     inputMessage: state.profilePage.inputMessage,
+    userAvatar: state.profilePage.userAvatar,
+    userBackgroundImage: state.profilePage.userBackgroundImage,
     buttonDisabled: state.profilePage.buttonDisabled()
 });
 
@@ -18,8 +20,8 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(addPostAction())
     }
 });
-const MyPostsContainer = connect(
+const ProfileContainer = connect(
     mapStateToProps,
-    mapDispatchToProps)(MyPosts)
+    mapDispatchToProps)(Profile)
 
-export default MyPostsContainer;
+export default ProfileContainer;

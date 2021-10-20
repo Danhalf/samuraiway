@@ -1,20 +1,22 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import { UserBackground, UserAvatar } from './ProfileImages/ImagesLinks'
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = props => {
-    return (
 
+    return (
         <div>
             < ProfileInfo
-                background={ UserBackground }
-                avatar={ UserAvatar }
+                background={ props.userBackgroundImage }
+                avatar={ props.userAvatar }
             />
-            <MyPostsContainer
-                state={ props.state }
-                avatar={ UserAvatar }
-                dispatch={ props.dispatch }
+            <MyPosts
+                posts={ props.posts }
+                inputMessage={ props.inputMessage }
+                buttonDisabled={ props.buttonDisabled }
+                changeText={ props.changeText }
+                addPost={ props.addPost }
+                userAvatar={ props.userAvatar }
             />
         </div>
     )

@@ -1,14 +1,18 @@
+import { UserAvatar, UserBackground } from "./ImagesLinks";
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_POST_MESSAGE = ' UPDATE-POST-MESSAGE'
 
 let initialState = {
 
     posts: [
-        { id: 1, message: `It's my 1st post!`, likesCount: 24 },
-        { id: 2, message: `It's my 2st post!`, likesCount: 4 },
-        { id: 3, message: `It's my 3st post!`, likesCount: 4 }
+        { id: 1, message: `It's my 1st post!`, likesCount: 24, userAvatar: UserAvatar },
+        { id: 2, message: `It's my 2st post!`, likesCount: 4, userAvatar: UserAvatar },
+        { id: 3, message: `It's my 3st post!`, likesCount: 4, userAvatar: UserAvatar }
     ],
     inputMessage: '',
+    userBackgroundImage: UserBackground,
+    userAvatar: UserAvatar,
     buttonDisabled() {
         return this.inputMessage.length < 1
     }
@@ -19,9 +23,10 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
-                id: 44,
+                id: ~~(Math.random() * 1000),
                 message: state.inputMessage,
-                likesCount: ~~(Math.random() * 10)
+                likesCount: ~~(Math.random() * 10),
+                userAvatar: UserAvatar
             }
             state.posts.push(newPost)
             state.inputMessage = ''

@@ -51,7 +51,10 @@ let initialState = {
             { id: 2, message: "Whut a u doing?" },
             { id: 3, message: "Shut up, mzfkr!" }
         ],
-    inputMessage: ''
+    inputMessage: '',
+    buttonDisabled() {
+        return this.inputMessage.length < 1
+    }
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -63,17 +66,17 @@ const dialogsReducer = (state = initialState, action) => {
             }
             state.messages.push(newMessage)
             state.inputMessage = ''
-            return state
+            return Object.assign({}, state, { addMessageAction })
         case UPDATE_DIALOG_MESSAGE:
             state.inputMessage = action.message;
-            return state
+            return Object.assign({}, state, { updateDialogMessageAction })
         default :
             return state
     }
 
 }
 
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
-export const updateDialogMessageActionCreator = text => ({ type: UPDATE_DIALOG_MESSAGE, message: text })
+export const addMessageAction = () => ({ type: ADD_MESSAGE })
+export const updateDialogMessageAction = text => ({ type: UPDATE_DIALOG_MESSAGE, message: text })
 
 export default dialogsReducer

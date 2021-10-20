@@ -38,8 +38,6 @@ const Dialogs = props => {
         props.addMessage()
     }
 
-    const checkIsDisabled = () => props.isDisabled()
-
     return (
         <div className={ style.dialogs }>
             <div className={ style.dialogs__items }>
@@ -62,7 +60,7 @@ const Dialogs = props => {
                         variant="contained"
                         endIcon={ <SendIcon/> }
                         onClick={ onAddMessage }
-                        disabled={ checkIsDisabled() }
+                        disabled={ props.buttonDisabled() }
                         sx={ { backgroundColor: "rgb(206, 142, 156)", borderRadius: '0 0 8px 8px' } }
                     >
                         Добавить сообщение

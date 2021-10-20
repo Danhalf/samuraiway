@@ -18,7 +18,6 @@ function MyPosts(props) {
     }
 
     const onAddPost = () => props.addPost()
-    const checkIsDisabled = () => props.isDisabled()
 
     return (
         <div>
@@ -28,7 +27,7 @@ function MyPosts(props) {
                     <TextField label="Обновите ваш статус!" onChange={ onChangeText }
                                value={ props.inputMessage }/>
                     <Button variant="contained" endIcon={ <AddIcon/> } onClick={ onAddPost }
-                            disabled={ checkIsDisabled() }
+                            disabled={ props.buttonDisabled }
                             sx={ { height: '100%' } }> Add
                         post</Button>
                 </div>

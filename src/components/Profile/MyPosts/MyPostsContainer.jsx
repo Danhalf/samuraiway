@@ -1,27 +1,25 @@
-import React from 'react';
-import { updatePostMessageActionCreator, addPostActionCreator } from "../../../db/profileReducer";
+import { updatePostMessageAction, addPostAction } from "../../../db/profileReducer";
 import MyPosts from "./MyPosts";
+import { connect } from "react-redux";
 
 
-function MyPostsContainer(props) {
-    const changeText = (text) => {
-        props.dispatch(updatePostMessageActionCreator(text))
-        isDisabled()
+const mapStateToProps = state => ({
+    posts: state.profilePage.posts,
+    inputMessage: state.profilePage.inputMessage,
+    buttonDisabled: state.profilePage.buttonDisabled()
+});
+
+
+const mapDispatchToProps = (dispatch) => ({
+    changeText: (text) => {
+        dispatch(updatePostMessageAction(text))
+    },
+    addPost: () => {
+        dispatch(addPostAction())
     }
-
-    const addPost = () => props.dispatch(addPostActionCreator())
-    const isDisabled = () => props.state.inputMessage === ''
-
-    return (
-        <MyPosts
-            addPost={ addPost }
-            changeText={ changeText }
-            isDisabled={ isDisabled }
-            posts={ props.state.posts }
-            inputMessage={ props.state.inputMessage }
-            avatar={ props.avatar }
-        />
-    );
-}
+});
+const MyPostsContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps)(MyPosts)
 
 export default MyPostsContainer;

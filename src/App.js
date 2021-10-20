@@ -11,23 +11,18 @@ import { Route } from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
-function App(props) {
+function App() {
+
     return (
         <div className="app-wrapper">
             <Header/>
-            <Navigation messagesCount={ props.state.dialogsPage.dialogs.length }/>
+            <Navigation messagesCount={ 5 }/>
             <main className="app-wrapper__main">
                 <Route path="/profile"
-                       render={ () => <Profile
-                           state={ props.state.profilePage }
-                           dispatch={ props.dispatch }
-                       /> }
+                       render={ () => <Profile/> }
                 />
                 <Route path="/dialogs"
-                       render={ () => <DialogsContainer
-                           state={ props.state.dialogsPage }
-                           dispatch={ props.dispatch }
-                       /> }
+                       render={ () => <DialogsContainer/> }
                 />
                 <Route path="/news" component={ News }/>
                 <Route path="/music" component={ Music }/>

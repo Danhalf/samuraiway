@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
     buttonDisabled: state.dialogsPage.buttonDisabled
 });
 
-
+ 
 const mapDispatchToProps = (dispatch) => ({
     changeText: (text) => {
         dispatch(updateDialogMessageAction(text))

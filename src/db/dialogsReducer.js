@@ -5,41 +5,44 @@ const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_DIALOG_MESSAGE = 'UPDATE-DIALOG-MESSAGE'
 
 const generator = new AvatarGenerator();
+const idGenerator = () => Math.random().toString(36).substr(2, 16);
+
 
 let initialState = {
     dialogs: [
+
         {
-            "id": "25",
+            "id": idGenerator(),
             'avatar': generator.generateRandomAvatar(),
             "name": "Andre",
             "online": true
         },
         {
-            "id": "241",
+            "id": idGenerator(),
             'avatar': generator.generateRandomAvatar(),
             "name": "Thomas",
             "online": false
         },
         {
-            "id": "122",
+            "id": idGenerator(),
             'avatar': generator.generateRandomAvatar(),
             "name": "Dru",
             "online": false
         },
         {
-            "id": "2125",
+            "id": idGenerator(),
             'avatar': generator.generateRandomAvatar(),
             "name": "Shone",
             "online": false
         },
         {
-            "id": "42",
+            "id": idGenerator(),
             'avatar': generator.generateRandomAvatar(),
             "name": "Reythis",
             "online": true
         },
         {
-            "id": "12200",
+            "id": idGenerator(),
             'avatar': generator.generateRandomAvatar(),
             "name": "Restor",
             "online": false
@@ -47,9 +50,9 @@ let initialState = {
     ],
     messages:
         [
-            { id: 1, message: "Wazzup" },
-            { id: 2, message: "Whut a u doing?" },
-            { id: 3, message: "Shut up, mzfkr!" }
+            { id: idGenerator(), message: "Wazzup" },
+            { id: idGenerator(), message: "Whut a u doing?" },
+            { id: idGenerator(), message: "Shut up, mzfkr!" }
         ],
     inputMessage: '',
     buttonDisabled() {
@@ -66,10 +69,10 @@ const dialogsReducer = (state = initialState, action) => {
             }
             state.messages.push(newMessage)
             state.inputMessage = ''
-            return Object.assign({}, state, { addMessageAction })
+            return Object.assign({}, state)
         case UPDATE_DIALOG_MESSAGE:
             state.inputMessage = action.message;
-            return Object.assign({}, state, { updateDialogMessageAction })
+            return Object.assign({}, state)
         default :
             return state
     }

@@ -30,10 +30,10 @@ const profileReducer = (state = initialState, action) => {
             }
             state.posts.push(newPost)
             state.inputMessage = ''
-            return Object.assign({}, state, addPostAction)
+            return Object.assign({}, state)
         case UPDATE_POST_MESSAGE :
             state.inputMessage = action.message;
-            return Object.assign({}, state, updatePostMessageAction)
+            return Object.assign({}, state)
         default :
             return state
     }

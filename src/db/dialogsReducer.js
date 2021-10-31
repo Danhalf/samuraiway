@@ -64,15 +64,12 @@ const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE :
             let newMessage = {
-                id: ~~(Math.random() * 1000),
+                id: idGenerator(),
                 message: state.inputMessage,
             }
-            state.messages.push(newMessage)
-            state.inputMessage = ''
-            return Object.assign({}, state)
+            return { ...state, messages: [ ...state.messages, newMessage ], inputMessage: '' }
         case UPDATE_DIALOG_MESSAGE:
-            state.inputMessage = action.message;
-            return Object.assign({}, state)
+            return { ...state, inputMessage: action.message };
         default :
             return state
     }

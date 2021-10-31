@@ -28,12 +28,12 @@ const profileReducer = (state = initialState, action) => {
                 likesCount: ~~(Math.random() * 10),
                 userAvatar: UserAvatar
             }
-            state.posts.push(newPost)
-            state.inputMessage = ''
-            return Object.assign({}, state)
-        case UPDATE_POST_MESSAGE :
-            state.inputMessage = action.message;
-            return Object.assign({}, state)
+            return {
+                ...state, posts: [ ...state.posts, newPost ], inputMessage: ''
+            }
+        case
+        UPDATE_POST_MESSAGE :
+            return { ...state, inputMessage: action.message }
         default :
             return state
     }

@@ -9,6 +9,7 @@ import BestFriends from "./components/Sidebar/BestFriends/BestFriends";
 import { Route } from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import Users from "./components/Users/Users";
 
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
                 />
                 <Route path="/dialogs"
                        render={ () => <DialogsContainer/> }
+                />
+                <Route path="/users"
+                       render={ () => <Users/> }
                 />
                 <Route path="/news" component={ News }/>
                 <Route path="/music" component={ Music }/>

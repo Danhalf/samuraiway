@@ -1,4 +1,4 @@
-import { updatePostMessageAction, addPostAction } from "../../db/profileReducer";
+import { updatePostMessageAction, addPostAction } from "../../redux/Reducers/profileReducer";
 import { connect } from "react-redux";
 import Profile from "./Profile";
 

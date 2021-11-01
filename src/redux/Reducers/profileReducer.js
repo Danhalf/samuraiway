@@ -1,4 +1,4 @@
-import { UserAvatar, UserBackground } from "./ImagesLinks";
+import { UserAvatar, UserBackground } from "../ImagesLinks";
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_POST_MESSAGE = ' UPDATE-POST-MESSAGE'

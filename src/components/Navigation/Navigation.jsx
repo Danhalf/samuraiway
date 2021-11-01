@@ -5,33 +5,38 @@ import styles from './Navigation.module.css';
 const Navigation = (props) => (
     <nav className={ styles.navigation }>
         <div className={ styles.item }>
-            <NavLink to="/profile" activeClassName={ styles.active }>
+            <NavLink to="/profile">
                 Profile
             </NavLink>
         </div>
         <div className={ styles.item }>
-            <NavLink to="/dialogs" activeClassName={ styles.active }>
+            <NavLink to="/dialogs">
                 Message
                 <span>{ props.messagesCount }</span>
             </NavLink>
         </div>
         <div className={ styles.item }>
-            <NavLink to="/news" activeClassName={ styles.active }>
+            <NavLink to="/users">
+                Users
+            </NavLink>
+        </div>
+        <div className={ styles.item }>
+            <NavLink to="/news">
                 News
             </NavLink>
         </div>
         <div className={ styles.item }>
-            <NavLink to="/music" activeClassName={ styles.active }>
+            <NavLink to="/music">
                 Music
             </NavLink>
         </div>
         <div className={ styles.item }>
-            <NavLink to="/settings" activeClassName={ styles.active }>
+            <NavLink to="/settings">
                 Settings
             </NavLink>
         </div>
         <div className={ `${ styles.item } ${ styles.best_friends }` }>
-            <NavLink to="/bestfriends" activeClassName={ styles.active }>
+            <NavLink to="/bestfriends">
                 Best Friends
             </NavLink>
         </div>

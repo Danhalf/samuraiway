@@ -1,4 +1,4 @@
-import { addMessageAction, updateDialogMessageAction } from "../../db/dialogsReducer";
+import { addMessageAction, updateDialogMessageAction } from "../../redux/Reducers/dialogsReducer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
     buttonDisabled: state.dialogsPage.buttonDisabled
 });
 
- 
+
 const mapDispatchToProps = (dispatch) => ({
     changeText: (text) => {
         dispatch(updateDialogMessageAction(text))

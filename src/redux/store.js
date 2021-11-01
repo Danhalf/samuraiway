@@ -1,5 +1,5 @@
-import profileReducer from "./profileReducer";
-import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./Reducers/profileReducer";
+import dialogsReducer from "./Reducers/dialogsReducer";
 import { AvatarGenerator } from "random-avatar-generator";
 
 const generator = new AvatarGenerator();

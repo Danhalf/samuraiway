@@ -1,14 +1,19 @@
-const UPDATE_POST_MESSAGE = ' UPDATE-POST-MESSAGE'
+import { AvatarGenerator } from "random-avatar-generator";
+
+const TOGGLE_SUBSCRIBE = 'TOGGLE_SUBSCRIBE'
+const SET_USERS = 'SET-USERS'
 
 const idGenerator = () => Math.random().toString(36).substr(2, 20);
+const avatarGenerator = new AvatarGenerator();
 
 let initialState = {
     users: [
         {
             id: idGenerator(),
             fullName: 'Alex',
+            userAvatar: avatarGenerator.generateRandomAvatar(),
             status: 'Im happy now :)',
-            followerd: true,
+            subscribed: true,
             location: {
                 country: 'UA',
                 city: 'Zhytomyr'
@@ -16,8 +21,9 @@ let initialState = {
         }, {
             id: idGenerator(),
             fullName: 'Merry',
+            userAvatar: avatarGenerator.generateRandomAvatar(),
             status: 'Im very happy !!! :)',
-            followerd: false,
+            subscribed: false,
             location: {
                 country: 'BU',
                 city: 'Minsk'
@@ -25,8 +31,9 @@ let initialState = {
         }, {
             id: idGenerator(),
             fullName: 'Tony',
+            userAvatar: avatarGenerator.generateRandomAvatar(),
             status: 'To old for this shit 8)',
-            followerd: true,
+            subscribed: true,
             location: {
                 country: 'USA',
                 city: 'NY',
@@ -43,15 +50,27 @@ let initialState = {
 const usersReducers = (state = initialState, action) => {
 
     switch (action.type) {
-        case
-        UPDATE_POST_MESSAGE :
-            return { ...state, inputMessage: action.message }
+        case TOGGLE_SUBSCRIBE:
+            return {
+                ...state,
+                users: state.users.map(user => user.id === action.userId ? {
+                    ...user,
+                    subscribed: !user.subscribed
+                } : user)
+            }
+
+        case SET_USERS:
+            return {
+                ...state,
+                users: [ ...state.users, ...action.users ]
+            }
         default :
             return state
     }
 
 }
 
-// export const updatePostMessageAction = text => ({ type: UPDATE_POST_MESSAGE, message: text })
+export const subscriberAC = userId => ({ type: TOGGLE_SUBSCRIBE, userId })
+export const setUsersAC = users => ({ type: SET_USERS, users })
 
 export default usersReducers

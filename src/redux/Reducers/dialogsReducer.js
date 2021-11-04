@@ -1,10 +1,9 @@
 import { AvatarGenerator } from "random-avatar-generator";
 
-
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_DIALOG_MESSAGE = 'UPDATE-DIALOG-MESSAGE'
 
-const generator = new AvatarGenerator();
+const avatarGenerator = new AvatarGenerator();
 const idGenerator = () => Math.random().toString(36).substr(2, 16);
 
 
@@ -13,37 +12,37 @@ let initialState = {
 
         {
             "id": idGenerator(),
-            'avatar': generator.generateRandomAvatar(),
+            'avatar': avatarGenerator.generateRandomAvatar(),
             "name": "Andre",
             "online": true
         },
         {
             "id": idGenerator(),
-            'avatar': generator.generateRandomAvatar(),
+            'avatar': avatarGenerator.generateRandomAvatar(),
             "name": "Thomas",
             "online": false
         },
         {
             "id": idGenerator(),
-            'avatar': generator.generateRandomAvatar(),
+            'avatar': avatarGenerator.generateRandomAvatar(),
             "name": "Dru",
             "online": false
         },
         {
             "id": idGenerator(),
-            'avatar': generator.generateRandomAvatar(),
+            'avatar': avatarGenerator.generateRandomAvatar(),
             "name": "Shone",
             "online": false
         },
         {
             "id": idGenerator(),
-            'avatar': generator.generateRandomAvatar(),
+            'avatar': avatarGenerator.generateRandomAvatar(),
             "name": "Reythis",
             "online": true
         },
         {
             "id": idGenerator(),
-            'avatar': generator.generateRandomAvatar(),
+            'avatar': avatarGenerator.generateRandomAvatar(),
             "name": "Restor",
             "online": false
         }

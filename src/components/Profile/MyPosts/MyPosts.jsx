@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './MyPosts.module.css';
 import MyPost from "./MyPost/MyPost";
-import { TextField, Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 
 

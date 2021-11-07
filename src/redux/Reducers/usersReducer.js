@@ -1,6 +1,3 @@
-import { AvatarGenerator } from "random-avatar-generator";
-import axios from "axios";
-
 const TOGGLE_SUBSCRIBE = 'TOGGLE_SUBSCRIBE'
 const SET_USERS = 'SET-USERS'
 
@@ -41,22 +38,10 @@ const SET_USERS = 'SET-USERS'
 // const idGenerator = () => Math.random().toString(36).substr(2, 20);
 // const avatarGenerator = new AvatarGenerator();
 
-const URL = `https://randomuser.me/api/`
-
-let usersData = []
-
-const userData = async () => axios.get(URL)
-    .then(response => usersData.push(response.data.results[0]))
-
-for (let i = 0; i < 5; i++) {
-    userData()
-}
-
-console.log(usersData);
 
 let initialState = {
 
-    users: usersData,
+    users: [],
 
     inputMessage: '',
     buttonDisabled() {

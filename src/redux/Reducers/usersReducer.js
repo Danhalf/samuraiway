@@ -1,5 +1,7 @@
 const TOGGLE_SUBSCRIBE = 'TOGGLE_SUBSCRIBE'
 const SET_USERS = 'SET-USERS'
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
+const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
 
 // [
 // {
@@ -42,6 +44,9 @@ const SET_USERS = 'SET-USERS'
 let initialState = {
 
     users: [],
+    pageSize: 20,
+    currentPage: 1,
+    totalPages: 0,
 
     inputMessage: '',
     buttonDisabled() {
@@ -65,7 +70,17 @@ const usersReducers = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [ ...state.users, ...action.users ]
+                users: [ ...action.users ],
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage,
+            }
+        case SET_TOTAL_COUNT:
+            return {
+                ...state,
+                totalPages: action.totalPages,
             }
         default :
             return state
@@ -73,7 +88,11 @@ const usersReducers = (state = initialState, action) => {
 
 }
 
-export const subscriberAC = userId => ({ type: TOGGLE_SUBSCRIBE, userId })
-export const setUsersAC = users => ({ type: SET_USERS, users })
+const subscriberAC = userId => ({ type: TOGGLE_SUBSCRIBE, userId })
+const setUsersAC = users => ({ type: SET_USERS, users })
+const setCurrentPagesAC = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
+const setTotalCountAC = totalPages => ({ type: SET_TOTAL_COUNT, totalPages })
+
+export { subscriberAC, setUsersAC, setCurrentPagesAC, setTotalCountAC }
 
 export default usersReducers

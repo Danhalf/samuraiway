@@ -1,29 +1,31 @@
 import style from './Users.module.css'
+import PaginationCreate from "./PaginationCreate";
 
 
 const Users = (props) => {
     const pagesCount = Math.ceil(props.totalPages / props.pageSize)
 
-    let pages = [ 1 ];
+    const pages = PaginationCreate(pagesCount, 3, props.currentPage)
 
-    for (let i = 1; i <= pagesCount; i++) {
-        i === 3 && pages.push(i)
-        i === pagesCount && pages.push(pagesCount);
-
+    const changePageByInput = (page) => {
+        props.onPageChanged(page)
     }
+
     return <div>
 
-        <ul className={ style.paggination }>
+        <ul className={ style.pagination }>
             { pages.map(page =>
                 <li
                     className={ props.currentPage === page && style.selectedPage }
-                    key={ page }
+                    key={ page + Math.random() }
                     onClick={ () => props.onPageChanged(page) }
                 >
                     { page }
-                </li>) }
-
+                </li>
+            )
+            }
         </ul>
+        <input type="text" placeholder='set page' onInput={ (e) => changePageByInput(e.target.value) }/>
         {
             props.users.map((user) =>
                 <div className={ style.user_block } key={ user.id }>

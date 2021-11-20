@@ -31,8 +31,9 @@ class UsersContainer extends Component {
 
     render() {
         return <Users onPageChanged={ this.onPageChanged }
-                      totalPages={ this.props.totalPages }
+                      totalPages={ this.props.totalPages } s
                       pageSize={ this.props.pageSize }
+                      currentPage={ this.props.currentPage }
                       users={ this.props.users }
                       randomAvatar={ this.avatarGenerator.generateRandomAvatar() }
                       subscribe={ this.props.subscribe }/>

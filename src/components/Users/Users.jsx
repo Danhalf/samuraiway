@@ -1,5 +1,6 @@
 import style from './Users.module.css'
 import PaginationCreate from "./PaginationCreate";
+import { TextField } from "@mui/material";
 
 
 const Users = (props) => {
@@ -9,6 +10,7 @@ const Users = (props) => {
 
     const changePageByInput = (page) => {
         props.onPageChanged(page)
+
     }
 
     return <div>
@@ -25,7 +27,15 @@ const Users = (props) => {
             )
             }
         </ul>
-        <input type="text" placeholder='set page' onInput={ (e) => changePageByInput(e.target.value) }/>
+        <div className={ style.setPageInput }>
+            <TextField id="standard-basic"
+                       label="Set page"
+                       variant="standard"
+                       sx={ { width: '100%' } }
+                       onInput={ (e) => changePageByInput(e.target.value) }
+            />
+        </div>
+
         {
             props.users.map((user) =>
                 <div className={ style.user_block } key={ user.id }>

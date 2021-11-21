@@ -2,43 +2,7 @@ const TOGGLE_SUBSCRIBE = 'TOGGLE_SUBSCRIBE'
 const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
-
-// [
-// {
-//     id: idGenerator(),
-//     fullName: 'Alex',
-//     userAvatar: avatarGenerator.generateRandomAvatar(),
-//     status: 'Im happy now :)',
-//     subscribed: true,
-//     location: {
-//         country: 'UA',
-//         city: 'Zhytomyr'
-//     }
-// }, {
-//     id: idGenerator(),
-//     fullName: 'Merry',
-//     userAvatar: avatarGenerator.generateRandomAvatar(),
-//     status: 'Im very happy !!! :)',
-//     subscribed: false,
-//     location: {
-//         country: 'BU',
-//         city: 'Minsk'
-//     }
-// }, {
-//     id: idGenerator(),
-//     fullName: 'Tony',
-//     userAvatar: avatarGenerator.generateRandomAvatar(),
-//     status: 'To old for this shit 8)',
-//     subscribed: true,
-//     location: {
-//         country: 'USA',
-//         city: 'NY',
-//     }
-// },
-// ]
-
-// const idGenerator = () => Math.random().toString(36).substr(2, 20);
-// const avatarGenerator = new AvatarGenerator();
+const SET_FETCHING_STATUS = 'SET-FETCHING-STATUS'
 
 
 let initialState = {
@@ -47,6 +11,7 @@ let initialState = {
     pageSize: 20,
     currentPage: 1,
     totalPages: 0,
+    isFetching: false,
 
     inputMessage: '',
     buttonDisabled() {
@@ -82,6 +47,11 @@ const usersReducers = (state = initialState, action) => {
                 ...state,
                 totalPages: action.totalPages,
             }
+        case SET_FETCHING_STATUS:
+            return {
+                ...state,
+                isFetching: action.isFetching,
+            }
         default :
             return state
     }
@@ -92,7 +62,8 @@ const subscriberAC = userId => ({ type: TOGGLE_SUBSCRIBE, userId })
 const setUsersAC = users => ({ type: SET_USERS, users })
 const setCurrentPagesAC = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
 const setTotalCountAC = totalPages => ({ type: SET_TOTAL_COUNT, totalPages })
+const setFetchingStatusAC = isFetching => ({ type: SET_FETCHING_STATUS, isFetching })
 
-export { subscriberAC, setUsersAC, setCurrentPagesAC, setTotalCountAC }
+export { subscriberAC, setUsersAC, setCurrentPagesAC, setTotalCountAC, setFetchingStatusAC }
 
 export default usersReducers

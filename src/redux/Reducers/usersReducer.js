@@ -58,12 +58,12 @@ const usersReducers = (state = initialState, action) => {
 
 }
 
-const subscriberAC = userId => ({ type: TOGGLE_SUBSCRIBE, userId })
-const setUsersAC = users => ({ type: SET_USERS, users })
-const setCurrentPagesAC = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
-const setTotalCountAC = totalPages => ({ type: SET_TOTAL_COUNT, totalPages })
-const setFetchingStatusAC = isFetching => ({ type: SET_FETCHING_STATUS, isFetching })
+const subscribe = userId => ({ type: TOGGLE_SUBSCRIBE, userId })
+const setUsers = users => ({ type: SET_USERS, users })
+const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
+const setTotalPages = totalPages => ({ type: SET_TOTAL_COUNT, totalPages })
+const setFetchingStatus = isFetching => ({ type: SET_FETCHING_STATUS, isFetching })
 
-export { subscriberAC, setUsersAC, setCurrentPagesAC, setTotalCountAC, setFetchingStatusAC }
+export { subscribe, setUsers, setCurrentPage, setTotalPages, setFetchingStatus }
 
 export default usersReducers

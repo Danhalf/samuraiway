@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import {
-    setCurrentPagesAC,
-    setFetchingStatusAC,
-    setTotalCountAC,
-    setUsersAC,
-    subscriberAC
+    setCurrentPage,
+    setFetchingStatus,
+    setTotalPages,
+    setUsers,
+    subscribe
 } from "../../redux/Reducers/usersReducer";
 import { Component } from "react";
 import { AvatarGenerator } from "random-avatar-generator";
@@ -22,22 +22,22 @@ class UsersContainer extends Component {
 
     async componentDidMount() {
         const URL = `https://social-network.samuraijs.com/api/1.0/users?page=${ this.props.currentPage }&count=${ this.props.pageSize }`
-        this.props.setFethingStatus(true)
+        this.props.setFetchingStatus(true)
         await axios.get(URL)
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setTotalPages(response.data.totalCount)
             })
-        this.props.setFethingStatus(false)
+        this.props.setFetchingStatus(false)
     }
 
     onPageChanged = async (page) => {
         const URL = `https://social-network.samuraijs.com/api/1.0/users?page=${ page }&count=${ this.props.pageSize }`
-        this.props.setFethingStatus(true)
+        this.props.setFetchingStatus(true)
         this.props.setCurrentPage(page)
         await axios.get(URL)
             .then(response => this.props.setUsers(response.data.items))
-        this.props.setFethingStatus(false)
+        this.props.setFetchingStatus(false)
     }
 
 
@@ -69,26 +69,14 @@ let mapStateToProps = (state) => ({
     totalPages: state.usersPage.totalPages,
     isFetching: state.usersPage.isFetching
 })
-let mapDispatchToProps = (dispatch) => {
-    return {
-        subscribe: (userId) => {
-            dispatch(subscriberAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (currentPage) => {
-            dispatch(setCurrentPagesAC(currentPage))
-        },
-        setTotalPages: (totalCount) => {
-            dispatch(setTotalCountAC(totalCount))
-        },
-        setFethingStatus: (isFetching) => {
-            dispatch(setFetchingStatusAC(isFetching))
-        }
-    }
-}
 
-const UsersConnect = connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+const UsersConnect = connect(mapStateToProps,
+    {
+        setUsers,
+        subscribe,
+        setTotalPages,
+        setCurrentPage,
+        setFetchingStatus
+    })(UsersContainer)
 
 export default UsersConnect

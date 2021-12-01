@@ -1,6 +1,7 @@
 import style from './Users.module.css'
 import PaginationCreate from "./PaginationCreate";
 import { TextField } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 
 const Users = (props) => {
@@ -40,11 +41,13 @@ const Users = (props) => {
             props.users.map((user) =>
                 <div className={ style.user_block } key={ user.id }>
                     <div>
-                        <img
-                            src={ user.photos.small ?? props.randomAvatar }
-                            className={ style.user_avatar }
-                            alt=""
-                        />
+                        <NavLink to={ `/profile/${ user.id }` }>
+                            <img
+                                src={ user.photos.small ?? props.randomAvatar }
+                                className={ style.user_avatar }
+                                alt=""
+                            />
+                        </NavLink>
                         { user.name }
                         {/*<div>{ user.location.country }</div>*/ }
                     </div>

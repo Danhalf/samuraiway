@@ -2,6 +2,7 @@ import styles from './MyPosts.module.css';
 import MyPost from "./MyPost/MyPost";
 import { Button, TextField } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+import { updatePostMessage } from "../../../redux/Reducers/profileReducer";
 
 
 function MyPosts(props) {
@@ -13,7 +14,7 @@ function MyPosts(props) {
 
     const onChangeText = (evt) => {
         let text = evt.target.value
-        props.changeText(text)
+        props.updatePostMessage(text)
     }
 
     const onAddPost = () => props.addPost()

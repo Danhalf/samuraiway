@@ -4,6 +4,8 @@ import ProfileUserAvatar from "./ProfileUserAvatar";
 
 
 function ProfileInfo(props) {
+    const avatar = props.profile ? props.profile.photos.small : props.avatar
+    const status = props.profile ? props.profile.aboutMe : `Default status`
     return (
         <div>
             <div className={ styles.user__background }>
@@ -12,11 +14,9 @@ function ProfileInfo(props) {
 
             <div className={ styles.user__description }>
                 <ProfileUserAvatar className={ styles.user__avatar } imgClassName={ styles.avatar__img }
-                                   avatar={ props.avatar }/>
+                                   avatar={ avatar }/>
+                { status }
 
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, eum ea, odio consectetur sed, pariatur
-                fugit qui error ipsam sint quo
-                officiis ut dolorem nemo voluptas nobis libero repudiandae repellat.
             </div>
         </div>
     );

@@ -8,13 +8,14 @@ const Profile = props => {
         <div>
             < ProfileInfo
                 background={ props.userBackgroundImage }
+                profile={ props.profile }
                 avatar={ props.userAvatar }
             />
             <MyPosts
                 posts={ props.posts }
                 inputMessage={ props.inputMessage }
                 buttonDisabled={ props.buttonDisabled }
-                changeText={ props.changeText }
+                updatePostMessage={ props.updatePostMessage }
                 addPost={ props.addPost }
                 userAvatar={ props.userAvatar }
             />

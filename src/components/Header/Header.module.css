@@ -18,3 +18,14 @@
     width: 80px;
     height: 80px;
 }
+
+.header__login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__link {
+    color: #ffffff;
+    text-decoration: none;
+}

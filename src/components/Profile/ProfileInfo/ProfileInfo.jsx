@@ -4,8 +4,7 @@ import ProfileUserAvatar from "./ProfileUserAvatar";
 
 
 function ProfileInfo(props) {
-    const avatar = props.profile ? props.profile.photos.small : props.avatar
-    const status = props.profile ? props.profile.aboutMe : `Default status`
+    console.log(props.profile);
     return (
         <div>
             <div className={ styles.user__background }>
@@ -14,9 +13,16 @@ function ProfileInfo(props) {
 
             <div className={ styles.user__description }>
                 <ProfileUserAvatar className={ styles.user__avatar } imgClassName={ styles.avatar__img }
-                                   avatar={ avatar }/>
-                { status }
+                                   avatar={ props.profile.photos.small }/>
+                { props.profile.aboutMe }
 
+                <ul className={ styles.contacts }>
+                    { Object.entries(props.profile.contacts).map(contact => {
+                        const [ contactName, value ] = contact;
+                        return (value && <li key={ contactName + value }>{ contactName } - { value }</li>)
+
+                    }) }
+                </ul>
             </div>
         </div>
     );

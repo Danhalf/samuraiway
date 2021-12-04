@@ -1,10 +1,13 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPosts from "./MyPosts/MyPosts";
+import LinearProgress from "@mui/material/LinearProgress";
+import Box from "@mui/material/Box";
 
 const Profile = props => {
 
-    return (
+    return props.profile ? (
+
         <div>
             < ProfileInfo
                 background={ props.userBackgroundImage }
@@ -20,6 +23,10 @@ const Profile = props => {
                 userAvatar={ props.userAvatar }
             />
         </div>
+    ) : (
+        <Box sx={ { width: '100%' } }>
+            <LinearProgress color="success" sx={ { height: '12px' } }/>
+        </Box>
     )
         ;
 }

@@ -1,15 +1,19 @@
 .user__description {
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr 7fr;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 7fr;
 }
 
 .user__img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 
 .avatar__img {
-  border-radius: 50%;
+    border-radius: 50%;
+}
+
+.contacts {
+    list-style: none;
 }

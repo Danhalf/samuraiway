@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import { Component } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 
 class ProfileContainer extends Component {
 
 
     componentDidMount() {
-        const URL = `https://social-network.samuraijs.com/api/1.0/profile/2`
+        const userId = this.props.match.params.userId ?? 2;
+        const URL = `https://social-network.samuraijs.com/api/1.0/profile/${ userId }`
         axios.get(URL)
             .then(response => {
                 this.props.setUserProfile(response.data)
@@ -37,8 +39,10 @@ const mapStateToProps = state => ({
     buttonDisabled: state.profilePage.buttonDisabled()
 });
 
+const withUrlDataProfileContainer = withRouter(ProfileContainer)
+
 
 export default connect(
     mapStateToProps,
     { updatePostMessage, addPost, setUserProfile })
-(ProfileContainer)
+(withUrlDataProfileContainer)

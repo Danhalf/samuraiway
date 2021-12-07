@@ -8,10 +8,10 @@ import {
 } from "../../redux/Reducers/usersReducer";
 import { Component } from "react";
 import { AvatarGenerator } from "random-avatar-generator";
-import axios from "axios";
 import Users from "./Users";
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import usersAPI from "../../API/API";
 
 class UsersContainer extends Component {
 
@@ -21,26 +21,23 @@ class UsersContainer extends Component {
     }
 
     async componentDidMount() {
-        const URL = `https://social-network.samuraijs.com/api/1.0/users?page=${ this.props.currentPage }&count=${ this.props.pageSize }`
         this.props.setFetchingStatus(true)
-        await axios.get(URL, {
-            withCredentials: true
-        })
+        await usersAPI.getUsers(
+            this.props.currentPage,
+            this.props.pageSize
+        )
             .then(response => {
-                this.props.setUsers(response.data.items)
-                this.props.setTotalPages(response.data.totalCount)
+                this.props.setUsers(response.items)
+                this.props.setTotalPages(response.totalCount)
             })
         this.props.setFetchingStatus(false)
     }
 
     onPageChanged = async (page) => {
-        const URL = `https://social-network.samuraijs.com/api/1.0/users?page=${ page }&count=${ this.props.pageSize }`
         this.props.setFetchingStatus(true)
         this.props.setCurrentPage(page)
-        await axios.get(URL, {
-            withCredentials: true
-        })
-            .then(response => this.props.setUsers(response.data.items))
+        await usersAPI.getUsers(page, this.props.pageSize)
+            .then(response => this.props.setUsers(response.items))
         this.props.setFetchingStatus(false)
     }
 

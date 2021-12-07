@@ -23,7 +23,9 @@ class UsersContainer extends Component {
     async componentDidMount() {
         const URL = `https://social-network.samuraijs.com/api/1.0/users?page=${ this.props.currentPage }&count=${ this.props.pageSize }`
         this.props.setFetchingStatus(true)
-        await axios.get(URL)
+        await axios.get(URL, {
+            withCredentials: true
+        })
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setTotalPages(response.data.totalCount)
@@ -35,7 +37,9 @@ class UsersContainer extends Component {
         const URL = `https://social-network.samuraijs.com/api/1.0/users?page=${ page }&count=${ this.props.pageSize }`
         this.props.setFetchingStatus(true)
         this.props.setCurrentPage(page)
-        await axios.get(URL)
+        await axios.get(URL, {
+            withCredentials: true
+        })
             .then(response => this.props.setUsers(response.data.items))
         this.props.setFetchingStatus(false)
     }

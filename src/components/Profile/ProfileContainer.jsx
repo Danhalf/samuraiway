@@ -18,8 +18,7 @@ class ProfileContainer extends Component {
             })
 
     }
-
-
+    
     render() {
         return (
             <div>

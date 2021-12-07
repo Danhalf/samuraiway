@@ -11,12 +11,11 @@ let
         isFetching: true
     }
 
+
 const authReducer = (state = initialState, action) => {
-    console.log(action.type)
     switch (action.type) {
 
         case SET_USER_DATA:
-            debugger
             return { ...state, ...action.data, isAuth: true }
 
         default:
@@ -32,5 +31,6 @@ export const setAuthUserData = (userId, email, login) => ({
         login
     }
 })
+
 
 export default authReducer

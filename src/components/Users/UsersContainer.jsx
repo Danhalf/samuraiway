@@ -4,7 +4,8 @@ import {
     setFetchingStatus,
     setTotalPages,
     setUsers,
-    subscribe
+    subscribe,
+    toggleFollowButtonDisabled
 } from "../../redux/Reducers/usersReducer";
 import { Component } from "react";
 import { AvatarGenerator } from "random-avatar-generator";
@@ -56,6 +57,8 @@ class UsersContainer extends Component {
                          users={ this.props.users }
                          randomAvatar={ this.avatarGenerator.generateRandomAvatar() }
                          subscribe={ this.props.subscribe }
+                         followButtonDisabled={ this.props.followButtonDisabled }
+                         toggleFollowButtonDisabled={ this.props.toggleFollowButtonDisabled }
                 /> }
 
 
@@ -68,7 +71,8 @@ let mapStateToProps = (state) => ({
     pageSize: state.usersPage.pageSize,
     currentPage: state.usersPage.currentPage,
     totalPages: state.usersPage.totalPages,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    followButtonDisabled: state.usersPage.followButtonDisabled
 })
 
 const UsersConnect = connect(mapStateToProps,
@@ -77,7 +81,8 @@ const UsersConnect = connect(mapStateToProps,
         subscribe,
         setTotalPages,
         setCurrentPage,
-        setFetchingStatus
+        setFetchingStatus,
+        toggleFollowButtonDisabled
     })(UsersContainer)
 
 export default UsersConnect

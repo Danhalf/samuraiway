@@ -3,6 +3,7 @@ const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
 const SET_FETCHING_STATUS = 'SET-FETCHING-STATUS'
+const TOGGLE_FOLLOW_BUTTON_DISABLED = 'TOGGLE_FOLLOW_BUTTON_DISABLED'
 
 
 let initialState = {
@@ -12,11 +13,7 @@ let initialState = {
     currentPage: 1,
     totalPages: 0,
     isFetching: false,
-
-    inputMessage: '',
-    buttonDisabled() {
-        return this.inputMessage.length < 1
-    }
+    followButtonDisabled: false
 }
 
 
@@ -28,7 +25,7 @@ const usersReducers = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(user => user.id === action.userId ? {
                     ...user,
-                    subscribed: !user.subscribed
+                    followed: !user.followed
                 } : user)
             }
 
@@ -52,6 +49,11 @@ const usersReducers = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching,
             }
+        case TOGGLE_FOLLOW_BUTTON_DISABLED:
+            return {
+                ...state,
+                followButtonDisabled: action.followButtonDisabled,
+            }
         default :
             return state
     }
@@ -63,7 +65,11 @@ const setUsers = users => ({ type: SET_USERS, users })
 const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
 const setTotalPages = totalPages => ({ type: SET_TOTAL_COUNT, totalPages })
 const setFetchingStatus = isFetching => ({ type: SET_FETCHING_STATUS, isFetching })
+const toggleFollowButtonDisabled = followButtonDisabled => ({
+    type: TOGGLE_FOLLOW_BUTTON_DISABLED,
+    followButtonDisabled
+})
 
-export { subscribe, setUsers, setCurrentPage, setTotalPages, setFetchingStatus }
+export { subscribe, setUsers, setCurrentPage, setTotalPages, setFetchingStatus, toggleFollowButtonDisabled }
 
 export default usersReducers

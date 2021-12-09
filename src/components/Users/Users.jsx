@@ -7,12 +7,9 @@ import usersAPI from "../../API/API";
 
 const Users = (props) => {
     const pagesCount = Math.ceil(props.totalPages / props.pageSize)
-
     const pages = PaginationCreate(pagesCount, 3, props.currentPage)
-
     const changePageByInput = (page) => {
         props.onPageChanged(page)
-
     }
 
     return <div>
@@ -56,13 +53,17 @@ const Users = (props) => {
                     <br/>
                     <button
                         className={ style.user_subscribe_btn }
+                        disabled={ props.followButtonDisabled }
                         onClick={ () => {
-                            if (!user.subscribed) {
+                            props.toggleFollowButtonDisabled(true)
+                            console.log(props.followButtonDisabled);
+                            if (!user.followed) {
                                 usersAPI.subscribe(user.id).then(resultCode => {
                                     if (resultCode === 0) {
                                         props.subscribe(user.id)
                                     }
                                 })
+
                             } else {
                                 usersAPI.unsubscribe(user.id).then(resultCode => {
                                     if (resultCode === 0) {
@@ -70,11 +71,11 @@ const Users = (props) => {
                                     }
                                 })
                             }
-
-
-                        } }
+                            props.toggleFollowButtonDisabled(false)
+                        }
+                        }
                     >
-                        { user.subscribed ? 'Unsubscribe' : 'Subscribe' }
+                        { user.followed ? 'Unsubscribe' : 'Subscribe' }
                     </button>
                 </div>
             )
